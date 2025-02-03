@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentor</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EAEAEA;
+            margin: 0;
+            padding: 0;
+            color: #1B263B;
+        }
+        header {
+            background-color: #1B263B;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #00C9A7;
+            padding: 10px;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            background-color: #1B263B;
+            border-radius: 5px;
+        }
+        .container {
+            text-align: center;
+            padding: 50px;
+        }
+        .preview-box {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .box {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            width: 30%;
+            box-shadow: 0px 0px 10px gray;
+        }
+        .box a {
+            text-decoration: none;
+            color: #00C9A7;
+            font-weight: bold;
+        }
+        footer {
+            background-color: #1B263B;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Documentor: Instant Answers, Expert Help-Right from Home
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="references.html">References</a>
+    </nav>
+    <div class="container">
+        <h1>Welcome to Documentor</h1>
+        <p>Your go-to platform for understanding documents easily!</p>
+        <div class="preview-box">
+            <div class="box">
+                <h2>Chatbot</h2>
+                <p>Ask any document-related question.</p>
+                <a href="chatbot.html">Go to Chatbot</a>
+            </div>
+            <div class="box">
+                <h2>References</h2>
+                <p>Need further assistance?</p>
+                <a href="references.html">Find in-person help near you</a>
+            </div>
+        </div>
+    </div>
+    <footer>
+        &copy; 2025 Documentor. All Rights Reserved.
+    </footer>
+</body>
+</html>
