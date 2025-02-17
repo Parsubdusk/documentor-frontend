@@ -55,6 +55,28 @@
             text-decoration: none;
             color: #00C9A7;
             font-weight: bold;
+            display: inline-block;
+            padding: 10px 15px;
+            border: 2px solid #00C9A7;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #00C9A7;
+            color: white;
+        }
+        .chatbot-container {
+            text-align: center;
+            padding: 50px;
+        }
+        #chatbox {
+            width: 50%;
+            height: 200px;
+            border: 1px solid #1B263B;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: white;
         }
         footer {
             background-color: #1B263B;
@@ -66,6 +88,7 @@
             bottom: 0;
         }
     </style>
+    <script src="chatbot.js"></script>
 </head>
 <body>
     <header>
@@ -83,12 +106,12 @@
             <div class="box">
                 <h2>Chatbot</h2>
                 <p>Ask any document-related question.</p>
-                <a href="chatbot.html">Go to Chatbot</a>
+                <a href="chatbot.html" class="button">Go to Chatbot</a>
             </div>
             <div class="box">
                 <h2>References</h2>
                 <p>Need further assistance?</p>
-                <a href="references.html">Find in-person help near you</a>
+                <a href="references.html" class="button">Find in-person help near you</a>
             </div>
         </div>
     </div>
@@ -97,3 +120,59 @@
     </footer>
 </body>
 </html>
+
+<!-- Chatbot Page -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentor Chatbot</title>
+    <script src="chatbot.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EAEAEA;
+            margin: 0;
+            padding: 0;
+            color: #1B263B;
+        }
+        .chatbot-container {
+            text-align: center;
+            padding: 50px;
+        }
+        #chatbox {
+            width: 50%;
+            height: 300px;
+            border: 1px solid #1B263B;
+            padding: 10px;
+            margin-top: 20px;
+            background-color: white;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Documentor Chatbot</h1>
+    </header>
+    <div class="chatbot-container">
+        <h2>Ask Your Legal Questions</h2>
+        <div id="chatbox"></div>
+        <input type="text" id="userInput" placeholder="Type your question...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+    <script>
+        function sendMessage() {
+            let userText = document.getElementById("userInput").value;
+            let chatbox = document.getElementById("chatbox");
+            let userMessage = `<p><strong>You:</strong> ${userText}</p>`;
+            chatbox.innerHTML += userMessage;
+            document.getElementById("userInput").value = "";
+            // This function should communicate with chatbot.js for responses
+        }
+    </script>
+</body>
+</html>
+
+
