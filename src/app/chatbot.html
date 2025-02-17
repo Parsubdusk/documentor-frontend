@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>Chatbot</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        DocuMentor: Instant Answers, Expert Help-Right from Home
+    </header>
+    <nav>
+        <a href="Documentor.html">Home</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="references.html">References</a>
+    </nav>
+    
+    <div class="container">
+        <h1>Chatbot</h1>
+        <p>Ask any document-related question.</p>
+        <div class="chat-window" id="chat-window">           
+    </div>
+        
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type your message" />
+            <button id="send-button">Send</button>
+        </div>
+    </div>
+    
+    <footer class = "footer">
+        <a href = "AboutUs.html" class = "footer-link">About Us</a>
+        <a href = "ContactUs.html" class = "footer-link">Contact Us</a>
+        <a href = "Help.html" class = "footer-link">Help</a>
+        &copy; 2025 DocuMentor. All Rights Reserved.
+    </footer>
+
+<script src="chatbot.js"></script> 
+
+<script>
+    document.getElementById('send-button').addEventListener('click', sendMessage);
+    document.getElementById('user-input').addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            sendMessage();
+        }
+    });
+
+    function sendMessage() {
+        let userInput = document.getElementById('user-input').value;
+        if (userInput.trim() === '') return;
+            
+        let chatWindow = document.getElementById('chat-window');
+        let userMessage = document.createElement('div');
+        userMessage.className = 'chat-message user-message';
+        userMessage.textContent = userInput;
+        chatWindow.appendChild(userMessage);
+            
+        document.getElementById('user-input').value = '';
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+            
+        setTimeout(() => {
+            let botMessage = document.createElement('div');
+            botMessage.className = 'chat-message bot-message';
+            botMessage.textContent = botResponse(userInput);
+            chatWindow.appendChild(botMessage);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+         }, 500);
+     }
+
+     function botResponse(userText) {
+         let response = "I'm here to assist! Try asking about references, document help, or help.";
+         if (userText.toLowerCase().includes("references")) { 
+             response = "You can get in-person references by clicking the 'References' on the Home page.";
+         } else if (userText.toLowerCase().includes("document")) {
+             response = "What kind of document are you looking for?";
+         } else if (userText.toLowerCase().includes("link")) {
+             response = "You can upload a link in the 'Upload a Link' section.";
+         } else if (userText.toLowerCase().includes("deadline")) {
+             response = "To add a deadline, enter a date in the 'Track Deadlines' section.";
+         } else if (userText.toLowerCase().includes("help")) {
+             response = "Visit the 'Help' at the bottom for the tutorial.";
+         }
+         return response;
+      }
+ </script>      
+</body>
+</html>
