@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Documentor References</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #EAEAEA;
+            margin: 0;
+            padding: 0;
+            color: #1B263B;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        header {
+            background-color: #1B263B;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+            width: 100%;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #00C9A7;
+            padding: 10px;
+            width: 100%;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+        }
+        nav a:hover {
+            background-color: #1B263B;
+            border-radius: 5px;
+        }
+        .references-container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px gray;
+            width: 60%;
+        }
+        .reference-list {
+            list-style: none;
+            padding: 0;
+        }
+        .reference-list li {
+            background-color: #00C9A7;
+            color: white;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .reference-list li:hover {
+            background-color: #1B263B;
+        }
+        footer {
+            background-color: #1B263B;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            position: absolute;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Documentor: Reliable References for Legal Assistance
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="chatbot.html">Chatbot</a>
+        <a href="references.html">References</a>
+    </nav>
+    <div class="references-container">
+        <h2>Find Reliable Legal Assistance</h2>
+        <p>Click on any reference below to explore helpful legal resources:</p>
+        <ul class="reference-list">
+            <li onclick="window.open('https://www.usa.gov/legal-aid', '_blank')">USA Government Legal Aid</li>
+            <li onclick="window.open('https://www.lsc.gov/', '_blank')">Legal Services Corporation</li>
+            <li onclick="window.open('https://www.nolo.com/', '_blank')">Nolo Legal Advice</li>
+            <li onclick="window.open('https://www.findlaw.com/', '_blank')">FindLaw Resources</li>
+            <li onclick="window.open('https://www.justia.com/', '_blank')">Justia Legal Help</li>
+        </ul>
+    </div>
+    <footer>
+        &copy; 2025 Documentor. All Rights Reserved.
+    </footer>
+</body>
+</html>
