@@ -50,6 +50,9 @@
             border-radius: 10px;
             box-shadow: 0px 0px 10px gray;
             width: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         #chatbox {
             width: 100%;
@@ -60,6 +63,14 @@
             background-color: white;
             overflow-y: auto;
             text-align: left;
+            border-radius: 5px;
+        }
+        #userInput {
+            width: 80%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #1B263B;
+            border-radius: 5px;
         }
         .button {
             text-decoration: none;
@@ -72,6 +83,7 @@
             margin-top: 10px;
             cursor: pointer;
             background-color: white;
+            transition: all 0.3s ease;
         }
         .button:hover {
             background-color: #00C9A7;
@@ -100,7 +112,7 @@
     <div class="chatbot-container">
         <h2>Ask Your Legal Questions</h2>
         <div id="chatbox"></div>
-        <input type="text" id="userInput" placeholder="Type your question...">
+        <input type="text" id="userInput" placeholder="Type your question..." onkeypress="handleKeyPress(event)">
         <button class="button" onclick="sendMessage()">Send</button>
     </div>
     <footer>
@@ -110,10 +122,18 @@
         function sendMessage() {
             let userText = document.getElementById("userInput").value;
             let chatbox = document.getElementById("chatbox");
+            if (userText.trim() === "") return; // Prevent empty messages
             let userMessage = `<p><strong>You:</strong> ${userText}</p>`;
             chatbox.innerHTML += userMessage;
             document.getElementById("userInput").value = "";
+            chatbox.scrollTop = chatbox.scrollHeight;
             // This function should communicate with chatbot.js for responses
+        }
+
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
         }
     </script>
 </body>
