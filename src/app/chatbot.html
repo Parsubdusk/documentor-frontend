@@ -1,84 +1,91 @@
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-<title>Chatbot</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/2.11.338/pdf.min.js"></script>
 </head>
 <body>
     <header>
-        DocuMentor: Instant Answers, Expert Help-Right from Home
+        DocuMentor: Instant Answers, Expert Help - Right from Home
     </header>
     <nav>
         <a href="Documentor.html">Home</a>
         <a href="chatbot.html">Chatbot</a>
         <a href="references.html">References</a>
     </nav>
-    
+
     <div class="container">
         <h1>Chatbot</h1>
         <p>Ask any document-related question.</p>
-        <div class="chat-window" id="chat-window">           
-    </div>
-        
+
+        <div class="chats-container" id="chats-container"></div>
+
         <div class="chat-input">
-            <input type="text" id="user-input" placeholder="Type your message" />
-            <button id="send-button">Send</button>
+            <form class="prompt-form">
+                <input type="text" id="user-input" class="prompt-input" placeholder="Type your message" required />
+                <button type="submit" id="send-button">Send</button>
+            </form>
+            <input type="file" accept="image/*, .pdf, .txt, .csv" id="file-input" />
         </div>
     </div>
-    
-    <footer class = "footer">
-        <a href = "AboutUs.html" class = "footer-link">About Us</a>
-        <a href = "ContactUs.html" class = "footer-link">Contact Us</a>
-        <a href = "Help.html" class = "footer-link">Help</a>
-        &copy; 2025 DocuMentor. All Rights Reserved.
+
+    <footer class="footer">
+        <a href="AboutUs.html" class="footer-link">About Us</a>
+        <a href="ContactUs.html" class="footer-link">Contact Us</a>
+        <a href="Help.html" class="footer-link">Help</a>
+        © 2025 DocuMentor. All Rights Reserved.
     </footer>
 
-<script src="chatbot.js"></script> 
+    <script src="Krisnewapi.js" defer></script>
 
-<script>
-    document.getElementById('send-button').addEventListener('click', sendMessage);
-    document.getElementById('user-input').addEventListener('keypress', function(event) {
-        if (event.key === 'Enter') {
-            sendMessage();
-        }
-    });
+    <script>
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+        document.getElementById('user-input').addEventListener('keypress', function (event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
 
-    function sendMessage() {
-        let userInput = document.getElementById('user-input').value;
-        if (userInput.trim() === '') return;
-            
-        let chatWindow = document.getElementById('chat-window');
-        let userMessage = document.createElement('div');
-        userMessage.className = 'chat-message user-message';
-        userMessage.textContent = userInput;
-        chatWindow.appendChild(userMessage);
-            
-        document.getElementById('user-input').value = '';
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-            
-        setTimeout(() => {
+        async function sendMessage() {
+            let userInput = document.getElementById('user-input').value.trim();
+            if (!userInput) return;
+
+            let chatWindow = document.getElementById('chats-container');
+
+            // Create user message in chat window
+            let userMessage = document.createElement('div');
+            userMessage.className = 'chat-message user-message';
+            userMessage.textContent = userInput;
+            chatWindow.appendChild(userMessage);
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+
+            // Clear input field
+            document.getElementById('user-input').value = '';
+
+            // Create bot response placeholder
             let botMessage = document.createElement('div');
             botMessage.className = 'chat-message bot-message';
-            botMessage.textContent = botResponse(userInput);
+            botMessage.textContent = "Thinking...";
             chatWindow.appendChild(botMessage);
             chatWindow.scrollTop = chatWindow.scrollHeight;
-         }, 500);
-     }
 
-     function botResponse(userText) {
-         let response = "I'm here to assist! Try asking about references, document help, or help.";
-         if (userText.toLowerCase().includes("references")) { 
-             response = "You can get in-person references by clicking the 'References' on the Home page.";
-         } else if (userText.toLowerCase().includes("document")) {
-             response = "What kind of document are you looking for?";
-         } else if (userText.toLowerCase().includes("link")) {
-             response = "You can upload a link in the 'Upload a Link' section.";
-         } else if (userText.toLowerCase().includes("deadline")) {
-             response = "To add a deadline, enter a date in the 'Track Deadlines' section.";
-         } else if (userText.toLowerCase().includes("help")) {
-             response = "Visit the 'Help' at the bottom for the tutorial.";
-         }
-         return response;
-      }
- </script>      
+            try {
+                // Call API from Krisnewapi.js
+                let botReply = await getAIResponse(userInput);
+                botMessage.textContent = botReply;
+            } catch (error) {
+                console.error("Error getting AI response:", error);
+                botMessage.textContent = "Sorry, something went wrong!";
+            }
+
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+        }
+    </script>
 </body>
 </html>
+
+
