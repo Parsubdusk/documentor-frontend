@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function () {
             chatWindow.scrollTop = chatWindow.scrollHeight;
     }
 
-    import {processMessage} from './nlp.js';
+    import {processMessage} from './index.js';
 
      async function botResponse(userText) {
        return processMessage(userText);
