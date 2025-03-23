@@ -1,0 +1,158 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: #EAEAEA;
+}
+
+/* Navbar */
+.navbar {
+    width: 100%;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    background-color: #009688;
+    position: absolute;
+    top: 0;
+}
+
+    .navbar ul {
+        list-style: none;
+        display: flex;
+        gap: 20px;
+    }
+
+        .navbar ul li {
+            list-style: none;
+        }
+
+            .navbar ul li a {
+                text-decoration: none;
+                color: white;
+                text-transform: uppercase;
+                font-weight: 500;
+                padding: 10px;
+            }
+
+            .navbar ul li:hover a {
+                color: white;
+            }
+
+/* Centered Content */
+.container {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+    .wrapper .static-txt {
+        color: #fff;
+        font-size: 60px;
+        font-weight: 400;
+    }
+
+    .wrapper .dynamic-txts {
+        margin-left: 15px;
+        height: 90px;
+        line-height: 90px;
+        overflow: hidden;
+    }
+
+.dynamic-txts li {
+    list-style: none;
+    color: #00C9A7;
+    font-size: 60px;
+    font-weight: 500;
+    position: relative;
+    top: 0;
+    animation: slide 12s steps(4) infinite;
+}
+
+@keyframes slide {
+    100% {
+        top: -360px;
+    }
+}
+
+.dynamic-txts li span {
+    position: relative;
+    margin: 5px 0;
+    line-height: 90px;
+}
+
+    .dynamic-txts li span::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: #EAEAEA;
+        border-left: 2px solid #009688;
+        animation: typing 3s steps(10) infinite;
+    }
+
+@keyframes typing {
+    40%, 60% {
+        left: calc(100% + 30px);
+    }
+
+    100% {
+        left: 0;
+    }
+}
+
+/* Buttons */
+.buttons {
+    margin-top: 30px;
+}
+
+button {
+    width: 200px;
+    padding: 15px;
+    text-align: center;
+    margin: 20px 10px;
+    border-radius: 25px;
+    font-weight: bold;
+    border: 2px solid #009688;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+    button span {
+        background: #009688;
+        height: 100%;
+        width: 100%;
+        border-radius: 25px;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: -1;
+        transition: 0.5s;
+    }
+
+    button:hover span {
+        width: 100%;
+    }
+
+    button:hover {
+        border: none;
+    }
