@@ -12,6 +12,30 @@
         document.getElementById("user-input").value = "";
         chatWindow.scrollTop = chatWindow.scrollHeight;
 
+        if (userInput.toLowerCase().includes("i want to go to the references page")) {
+            setTimeout(() => {
+                window.location.href = "references.html"; 
+            }, 1000);
+            return;
+        }
+
+        const legalResources = {
+            "USA government legal aid": "https://www.usa.gov/legal-aid",
+            "Legal services corporation": "https://www.lsc.gov/",
+            "Nolo legal advice": "https://www.nolo.com/",
+            "Findlaw resources": "https://www.findlaw.com/",
+            "Justia legal help": "https://www.justia.com/"
+        };
+
+        for (let key in legalResources) {
+            if (userInput.includes(key)) {
+                setTimeout(() => {
+                    window.open(legalResources[key], "_blank");
+                }, 1000);
+                return;
+            }
+        }
+
         try {
         const response = await fetch("http://localhost:3000/bot", {
             method: "POST",
